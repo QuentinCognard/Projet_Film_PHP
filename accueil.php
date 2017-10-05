@@ -3,8 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>Page d'acceuil</title>
+     <link rel="stylesheet" type="text/css" href="accueil.css">
   </head>
+  <header>
+    <h1> Film Search</h1>
+  </header>
   <body>
+    <section>
+      <h2> Recherchez un film</h2>
     <?php
 
       $criteres =
@@ -46,5 +52,8 @@
          <br><input type="submit" name="criteresFilm">
 
     </form>
+
+
+  </section>
   </body>
 </html>

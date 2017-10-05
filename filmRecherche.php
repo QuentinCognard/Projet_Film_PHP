@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>Liste Recherche </title>
   </head>
+  <header>
+    <h1> Film Search </h1>
+  </header>
   <body>
     <?php
 
