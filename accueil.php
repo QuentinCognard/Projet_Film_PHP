@@ -9,24 +9,33 @@
 
       $criteres =
         [
-          array("name"=>"Titre","value"=>"titre"),array("name"=>"Alphabétique","value"=>"alphabetique"),
-          array("name"=>"Pays","value"=>"pays"),array("name"=>"Ordre chronologique","value"=>"chronologique"),
-          array("name"=>"Durée","value"=>"duree"),
-          array("name"=>"Réalisateur","value"=>"realisateur")
-        ];
+          "type"=>"radio",
+          "text"=>"Trier les films selon les criteres: ",
+          "name"=>"criteres",
+          "choices"=> [
+          array("text"=>"Titre","value"=>"titre"),
+          array("text"=>"Alphabétique","value"=>"alphabetique"),
+          array("text"=>"Pays","value"=>"pays"),
+          array("text"=>"Ordre chronologique","value"=>"chronologique"),
+          array("text"=>"Durée","value"=>"duree"),
+          array("text"=>"Réalisateur","value"=>"realisateur")
+        ]
+      ];
     ?>
     <form action='filmRecherche.php' method="POST">
       Rechercher par nom : <input type="text" name="recherche">
       <input type="submit">
       </form>
     <form action='filmCriteres.php' method="POST">
-      Trier les films selon des critères :
         <?php
-        foreach($criteres as $c){
-          echo "<br><input type='radio' name=$c[name] value=$c[value]> ";
-          echo "<label for=$c[value]> $c[name] </label>";
+        $html = $criteres["text"] . "<br>";
+        $i = 0;
+        foreach ( $criteres["choices"] as $c){
+          $i +=1;
+          $html .= "<input type ='radio' name='$criteres[name]' value='$c[value]' id='$criteres[name]-$i'>";
+          $html .= " <label for='$criteres[name]-$i'>$c[text]</label>";
         }
-
+        echo $html;
          ?>
          <br><input type="submit">
 
