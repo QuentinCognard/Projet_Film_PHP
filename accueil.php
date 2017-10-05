@@ -8,7 +8,7 @@
     <?php
 
       $criteres =
-        [
+        [array(
           "type"=>"radio",
           "text"=>"Trier les films selon les criteres: ",
           "name"=>"criteres",
@@ -20,24 +20,30 @@
           array("text"=>"Durée","value"=>"duree"),
           array("text"=>"Réalisateur","value"=>"realisateur")
         ]
-      ];
+      )];
     ?>
     <form action='filmRecherche.php' method="POST">
       Rechercher par nom : <input type="text" name="recherche">
-      <input type="submit">
-      </form>
-    <form action='filmCriteres.php' method="POST">
+      <input type="submit" name="rechercheFilm">
         <?php
-        $html = $criteres["text"] . "<br>";
-        $i = 0;
-        foreach ( $criteres["choices"] as $c){
-          $i +=1;
-          $html .= "<input type ='radio' name='$criteres[name]' value='$c[value]' id='$criteres[name]-$i'>";
-          $html .= " <label for='$criteres[name]-$i'>$c[text]</label>";
+        function question_radio($criteres){
+          $html = $criteres["text"] . "<br>";
+          $i = 0;
+          foreach ( $criteres["choices"] as $c){
+            $i +=1;
+            $html .= "<input type ='radio' name='$criteres[name]' value='$c[value]' id='$criteres[name]-$i'>";
+            $html .= " <label for='$criteres[name]-$i'>$c[text]</label>";
+          }
+          echo $html;
         }
-        echo $html;
+
+        foreach($criteres as $c){
+          question_radio($c);
+        }
+
+
          ?>
-         <br><input type="submit">
+         <br><input type="submit" name="criteresFilm">
 
     </form>
   </body>
