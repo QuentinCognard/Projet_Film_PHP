@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     <title>Liste Recherche </title>
   </head>
-  <header>
-    <h1> Film Search </h1>
-  </header>
   <body>
     <?php
 
@@ -14,14 +11,35 @@
 
     if (isset($_POST['rechercheFilm'])){
 
+      if ($_POST['criteresCombo']=='nom'){
+        $result=$file_db->query("SELECT * FROM films WHERE titre_original LIKE '".$_POST['recherche']."%'");
+        echo "<ul>";
 
-      $result=$file_db->query("SELECT * FROM films WHERE titre_original LIKE '".$_POST['recherche']."%'");
-      echo "<ul>";
+        foreach($result as $c){
+          echo "<li>$c[code_film] $c[titre_original]";
+        }
+        echo "</ul>";
+      }
 
-      foreach($result as $c){
-        echo "<li>$c[code_film] $c[titre_original]";
-    }
-    echo "</ul>";
+      elseif ($_POST['criteresCombo']=='pays'){
+        $result=$file_db->query("SELECT * FROM films WHERE pays LIKE '".$_POST['recherche']."%'");
+        echo "<ul>";
+
+        foreach($result as $c){
+          echo "<li>$c[code_film] $c[titre_original]";
+        }
+        echo "</ul>";
+      }
+
+      elseif ($_POST['criteresCombo']=='realisateur'){
+        $result=$file_db->query("SELECT * FROM films WHERE realisateur LIKE '".$_POST['recherche']."%'");
+        echo "<ul>";
+
+        foreach($result as $c){
+          echo "<li>$c[code_film] $c[titre_original]";
+        }
+        echo "</ul>";
+      }
   }
 
   elseif (isset($_POST['criteresFilm'])) {
@@ -89,6 +107,7 @@
   }
 }
     $file_db=null;
+    phpinfo();
     ?>
   </body>
 </html>
