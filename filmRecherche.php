@@ -7,7 +7,7 @@
   <body>
     <?php
 
-    $file_db=new PDO("sqlite:films.sqlite");
+    $file_db=new PDO("sqlite:BD_GENERAL.sqlite");
 
     if (isset($_POST['rechercheFilm'])){
 
@@ -16,7 +16,7 @@
         echo "<ul>";
 
         foreach($result as $c){
-          echo "<li>$c[code_film] $c[titre_original]";
+          echo "<li>$c[code_film] $c[titre_original] $c[realisateur]";
         }
         echo "</ul>";
       }
@@ -32,7 +32,7 @@
       }
 
       elseif ($_POST['criteresCombo']=='realisateur'){
-        $result=$file_db->query("SELECT * FROM films WHERE realisateur LIKE '".$_POST['recherche']."%'");
+        $result=$file_db->query("SELECT * FROM films NATURAL JOIN individus WHERE nom LIKE '".$_POST['recherche']."%'and code_indiv=realisateur");
         echo "<ul>";
 
         foreach($result as $c){
@@ -64,15 +64,6 @@
         echo "</ul>";
 
       }
-      elseif ($_POST['criteres']=='pays'){
-        $result=$file_db->query("SELECT DISTINCT pays from films ORDER BY pays");
-        echo "<ul>";
-
-        foreach($result as $c){
-          echo "<li>$c[pays]";
-        }
-        echo "</ul>";
-      }
       elseif ($_POST['criteres']=='chronologique'){
         $result=$file_db->query("SELECT * from films ORDER BY date");
         echo "<ul>";
@@ -91,16 +82,6 @@
         }
         echo "</ul>";
       }
-      elseif ($_POST['criteres']=='realisateur'){
-        $result=$file_db->query("SELECT DISTINCT realisateur from films ORDER BY realisateur");
-        echo "<ul>";
-
-        foreach($result as $c){
-          echo "<li>$c[realisateur]";
-        }
-        echo "</ul>";
-      }
-
     else{
       echo "NON";
     }
