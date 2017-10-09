@@ -88,7 +88,12 @@
 
          ?>
          <br><input type="submit" name="criteresFilm">
+         <section id='exempleF'>
+           <h2> Exemples de Film : </h2>
 
+            
+
+         </section>
     </form>
   </section>
   </body>

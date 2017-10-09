@@ -3,8 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Liste Recherche </title>
+    <link rel="stylesheet" type="text/css" href="accueil.css">
   </head>
+  <header>
+    <h1> Film Search</h1>
+  </header>
   <body>
+    <section>
     <?php
 
     $file_db=new PDO("sqlite:BD_GENERAL.sqlite");
@@ -88,7 +93,7 @@
   }
 }
     $file_db=null;
-    phpinfo();
     ?>
+  </section>
   </body>
 </html>
