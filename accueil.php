@@ -13,6 +13,13 @@
       <h2> Recherchez un film</h2>
     <?php
 
+      $genreCombo=array(
+        "type" => "comboBox",
+        "name" => "genreCombo",
+        "value" => "genreCombo",
+        "text" => "Rechercher par 'genre' :"
+      );
+
       $criteresCombo=array(
         "type" => "comboBox",
         "name" => "criteresCombo",
@@ -40,12 +47,9 @@
           "text"=>"Trier les films selon les criteres: ",
           "name"=>"criteres",
           "choices"=> [
-          array("text"=>"Titre","value"=>"titre"),
           array("text"=>"Alphabétique","value"=>"alphabetique"),
-          array("text"=>"Pays","value"=>"pays"),
           array("text"=>"Ordre chronologique","value"=>"chronologique"),
-          array("text"=>"Durée","value"=>"duree"),
-          array("text"=>"Réalisateur","value"=>"realisateur")
+          array("text"=>"Durée","value"=>"duree")
         ]
       )];
     ?>
@@ -63,6 +67,25 @@
           echo $html;
         }
 
+        function genres_checkbox($genreCombo){
+          $file_db_genre=new PDO("sqlite:BD_GENERAL.sqlite");
+          $result_genre=$file_db_genre->query("SELECT * FROM genres");
+          $html = $genreCombo["text"];
+          $html .= "<select name='$genreCombo[name]'>";
+          foreach ($result_genre as $rg){
+            $html .= "<option value='$rg[nom_genre]'>$rg[nom_genre]</option>";
+          }
+          $html .= "</select>";
+          echo $html;
+        }
+
+        genres_checkbox($genreCombo);
+        ?>
+
+        <input type="submit" name="genreFilm"><br>
+
+        <?php
+        
         criteres_checkbox($criteresCombo);
 
         ?>

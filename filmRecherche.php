@@ -89,9 +89,19 @@
       }
     else{
       echo "NON";
+      }
     }
   }
-}
+
+  elseif (isset($_POST['genreFilm'])) {
+    $result=$file_db->query("SELECT * from films NATURAL JOIN genres NATURAL JOIN classification where nom_genre LIKE '".$_POST['genreCombo']."%'and code_film=ref_code_film and code_genre=ref_code_genre");
+    echo "<ul>";
+    foreach($result as $c){
+      echo "<li>$c[titre_original] $c[duree]";
+    }
+    echo "</ul>";
+  }
+  
     $file_db=null;
     ?>
   </section>
