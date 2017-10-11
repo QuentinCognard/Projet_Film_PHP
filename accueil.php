@@ -85,7 +85,7 @@
         <input type="submit" name="genreFilm"><br>
 
         <?php
-        
+
         criteres_checkbox($criteresCombo);
 
         ?>
@@ -117,25 +117,76 @@
              "id"=>"15",
              "link"=>"https://vignette2.wikia.nocookie.net/fr.starwars/images/e/e0/Lundi.png/revision/latest?cb=20151011153017",
              "name"=>"Star Wars",
-             "section"=> "exemple1"
+             "value"=>"Star Wars: Episode V, T",
+             "section"=> "exemple1",
+             "Debutligne" => "true",
+             "Finligne" => "false"
          ),
          array(
            "id"=>"16",
            "link"=>"http://fr.web.img6.acsta.net/medias/nmedia/00/00/01/27/69197311_af.jpg",
-           "name"=> "2001 L'odyssée de l'espace",
-           "section" => "exemple2"
-
+           "name"=> "2001 L'odyssée",
+           "value"=> "2001",
+           "section" => "exemple2",
+           "Debutligne" => "false",
+           "Finligne" => "false"
+         ),
+         array(
+           "id"=>"17",
+           "link"=>"http://fr.web.img5.acsta.net/medias/nmedia/00/00/00/33/spiderman.jpg",
+           "name"=> "Spider-Man",
+           "value"=> "Spider",
+           "section" => "exemple3",
+           "Debutligne" => "false",
+            "Finligne" => "true"
+         ),
+         array(
+           "id"=>"18",
+           "link"=>"http://fr.web.img6.acsta.net/medias/04/34/49/043449_af.jpg",
+           "name"=> "Matrix",
+           "value"=>"Matrix",
+           "section" => "exemple4",
+           "Debutligne" => "true",
+            "Finligne" => "false"
+         ),
+         array(
+           "id"=>"19",
+           "link"=>"http://images.fan-de-cinema.com/affiches/large/63/53663.jpg",
+           "name"=> "2046",
+           "value"=>"2046",
+           "section" => "exemple5",
+           "Debutligne" => "false",
+            "Finligne" => "false"
+          ),
+         array(
+           "id"=>"20",
+           "link"=>"http://www.dailymars.net/wp-content/uploads/2013/09/Ben_Hur.jpg",
+           "name"=> "Ben-Hur",
+           "value"=>"Ben",
+           "section" => "exemple6",
+           "Debutligne" => "false",
+            "Finligne" => "true"
          )
 
        ];
        ?>
-      <section id='exempleF'>
-         <h2> Exemples de Film : </h2>
+       <h2> Exemples de Film : </h2>
+      <section class='exempleF'>
+
 <?php
        foreach($exemples as $e){
-         echo "<section id=$e[section]>";
+        //  echo "<section id=$e[section]>";
+         if($e['Debutligne']=="true"){
+           echo "<div class='exempleF2'>";
+         }
+         echo "<section id=$e[section]$e[id]>";
          echo "<p> $e[name] </p>";
-         echo "<a href='filmExemple.php?id=$e[id]'><img src=$e[link] alt='Erreur Image 1' height='300' width='200'></a>";
+         echo "<a href='filmExemple.php?value=$e[value]&link=$e[link]'><img src=$e[link] alt='Erreur Image $e[id]' height='300' width='200'></a>";
+         echo "</section>";
+         if($e['Finligne']=="true"){
+           echo "</div>";
+         }
+        //  echo"</section>";
        }
    ?>
 

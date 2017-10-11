@@ -67,3 +67,6 @@ body {
     background-color: #f2f2f2;
     margin: 0;
 }
+.exempleF{
+  display: flex;
+}

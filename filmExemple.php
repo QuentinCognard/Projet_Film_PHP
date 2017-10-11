@@ -9,26 +9,33 @@
     <h1> Film Search</h1>
   </header>
   <body>
+    <section id='principale'>
     <?php
 $file_db=new PDO("sqlite:BD_GENERAL.sqlite");
 
-      if (isset($_GET['id'])){
-        if($_GET['id']==15){
-          $result=$file_db->query("SELECT * FROM films WHERE titre_original LIKE 'Star Wars: Episode V, T%'");
-          foreach($result as $c){
-            echo "<li>$c[code_film] $c[titre_original]";
+      if (isset($_GET['value'])){
+        $result=$file_db->query("SELECT * FROM films WHERE titre_original LIKE '$_GET[value]%'");
+        $real=$file_db->query("SELECT nom FROM individus NATURAL JOIN films WHERE titre_original LIKE '$_GET[value]%' and code_indiv=realisateur");
+        foreach($result as $c){
+          echo "<ul>";
+          echo "<li>Nom du Film : $c[titre_original] ";
+          echo "<li>Nom Français : $c[titre_francais]";
+          echo "<li>Origine : $c[pays]";
+          foreach($real as $r){
+            echo "<li>Réalisateur : $r[nom]";
           }
+          echo"<li>Date de parution : $c[date]";
+          echo "<li>Durée du film : $c[duree] minutes";
+          echo "</ul>";
+          echo "<img src='$_GET[link]' alt='Image non chargé' height='300' width='200'>";
+
+
         }
-        if($_GET['id']==16){
-          $result=$file_db->query("SELECT * FROM films WHERE titre_original LIKE '2001%'");
-          foreach($result as $c){
-            echo "<li>$c[code_film] $c[titre_original]";
-          }
-        }
+
       }
 
         $file_db=null;
         ?>
-
+</section>
   </body>
 </html>
