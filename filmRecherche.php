@@ -9,7 +9,7 @@
     <h1> Film Search</h1>
   </header>
   <body>
-    <section>
+    <section id='principale'>
     <?php
 
     $file_db=new PDO("sqlite:BD_GENERAL.sqlite");

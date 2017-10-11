@@ -9,7 +9,7 @@
     <h1> Film Search</h1>
   </header>
   <body>
-    <section>
+    <section id='principale'>
       <h2> Recherchez un film</h2>
     <?php
 
@@ -88,10 +88,43 @@
 
          ?>
          <br><input type="submit" name="criteresFilm">
-         <section id='exempleF'>
-           <h2> Exemples de Film : </h2>
+         <?php
+         $exemples =
+           [array(
+             "id"=>"15",
+             "link"=>"https://vignette2.wikia.nocookie.net/fr.starwars/images/e/e0/Lundi.png/revision/latest?cb=20151011153017",
+             "name"=>"Star Wars",
+             "section"=> "exemple1"
+         ),
+         array(
+           "id"=>"16",
+           "link"=>"http://fr.web.img6.acsta.net/medias/nmedia/00/00/01/27/69197311_af.jpg",
+           "name"=> "2001 L'odyssée de l'espace",
+           "section" => "exemple2"
 
-            
+         )
+
+       ];
+       ?>
+      <section id='exempleF'>
+         <h2> Exemples de Film : </h2>
+<?php
+       foreach($exemples as $e){
+         echo "<section id=$e[section]>";
+         echo "<p> $e[name] </p>";
+         echo "<a href='filmExemple.php?id=$e[id]'><img src=$e[link] alt='Erreur Image 1' height='300' width='200'></a>";
+       }
+   ?>
+
+
+           <!-- <section id='exemple1'>
+             <p> Star Wars </p>
+             <a href='filmExemple.php?id=15'><img src='https://vignette2.wikia.nocookie.net/fr.starwars/images/e/e0/Lundi.png/revision/latest?cb=20151011153017' alt='Erreur Image 1'></a>
+         </section>
+          <section id='exemple2'>
+            <p> 2001 L'odyssée de l'espace </p>
+            <a href='filmExemple.php?id=16'><img src="http://fr.web.img6.acsta.net/medias/nmedia/00/00/01/27/69197311_af.jpg"alt="Oups l'image 2 ne marche plus :(  " height="300" width="200"></a> -->
+
 
          </section>
     </form>
