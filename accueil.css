@@ -76,7 +76,8 @@ body {
   margin-left: 15%;
 }
 
-.exempleF2 a:hoover{
-  color:#fecc00;
-border-bottom: thin solid #C10127;
+section a:hover,
+section a:focus{
+  background:  rgba(252, 226, 110, 0.5);
+
 }

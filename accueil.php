@@ -182,7 +182,7 @@
          }
          echo "<section id=$e[section]$e[id]>";
          echo "<p> $e[name] </p>";
-         echo "<a href='filmExemple.php?value=$e[value]&link=$e[link]'><img src=$e[link] name='test' onmouseover='image.src=https://www.noelshack.com/2017-41-5-1507885240-test.jpg' alt='Erreur Image $e[id]' height='300' width='200'></a>";
+         echo "<a href='filmExemple.php?value=$e[value]&link=$e[link]'><img src=$e[link] name='test' onmouseover='this.src=https://www.noelshack.com/2017-41-5-1507885240-test.jpg' alt='Erreur Image $e[id]' height='300' width='200'></a>";
          echo "</section>";
          if($e['Finligne']=="true"){
            echo "</div>";
