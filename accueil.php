@@ -17,15 +17,15 @@
         "type" => "comboBox",
         "name" => "genreCombo",
         "value" => "genreCombo",
-        "text" => "Rechercher par 'genre' :"
+        "text" => "Rechercher par 'genre' : "
       );
 
       $criteresCombo=array(
         "type" => "comboBox",
         "name" => "criteresCombo",
         "value" => "criteresCombo",
-        "text" => "Rechercher par",
-        "text2" => ":",
+        "text" => "<br>Rechercher par ",
+        "text2" => " : ",
         "choices" =>[
         array(
           "text" => "Nom",
@@ -44,7 +44,7 @@
       $criteres =
         [array(
           "type"=>"radio",
-          "text"=>"Trier les films selon les criteres: ",
+          "text"=>"<br>Trier les films selon les criteres: ",
           "name"=>"criteres",
           "choices"=> [
           array("text"=>"Alphabétique","value"=>"alphabetique"),
@@ -82,7 +82,7 @@
         genres_checkbox($genreCombo);
         ?>
 
-        <input type="submit" name="genreFilm"><br>
+        <input type="submit" value='Rechercher' name="genreFilm"><br>
 
         <?php
 
@@ -90,7 +90,7 @@
 
         ?>
       <input type="text" name="recherche">
-      <input type="submit" name="rechercheFilm">
+      <input type="submit" value='Rechercher' name="rechercheFilm">
       <br>
 
         <?php
@@ -99,7 +99,7 @@
           $i = 0;
           foreach ( $criteres["choices"] as $c){
             $i +=1;
-            $html .= "<input type ='radio' name='$criteres[name]' value='$c[value]' id='$criteres[name]-$i'>";
+            $html .= "<br><input type ='radio' name='$criteres[name]' value='$c[value]' id='$criteres[name]-$i'>";
             $html .= " <label for='$criteres[name]-$i'>$c[text]</label>";
           }
           echo $html;
@@ -110,7 +110,8 @@
         }
 
          ?>
-         <br><input type="submit" name="criteresFilm">
+         <br>
+         <br><input type="submit" value='Trier' name="criteresFilm">
          <?php
          $exemples =
            [array(
@@ -181,7 +182,7 @@
          }
          echo "<section id=$e[section]$e[id]>";
          echo "<p> $e[name] </p>";
-         echo "<a href='filmExemple.php?value=$e[value]&link=$e[link]'><img src=$e[link] alt='Erreur Image $e[id]' height='300' width='200'></a>";
+         echo "<a href='filmExemple.php?value=$e[value]&link=$e[link]'><img src=$e[link] name='test' onmouseover='image.src=https://www.noelshack.com/2017-41-5-1507885240-test.jpg' alt='Erreur Image $e[id]' height='300' width='200'></a>";
          echo "</section>";
          if($e['Finligne']=="true"){
            echo "</div>";
