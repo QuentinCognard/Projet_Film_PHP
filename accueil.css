@@ -2,7 +2,9 @@ header a, header h1, header h2, header h3
 {
   color: #FFF; /* met la couleur de la police en blanc par défaut */
 }
-
+*{
+  text-decoration: none;
+}
 /* latin-ext */
 @font-face {
   font-family: 'Oswald';

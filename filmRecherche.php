@@ -21,7 +21,7 @@
         echo "<ul>";
 
         foreach($result as $c){
-          echo "<li>$c[code_film] $c[titre_original] $c[realisateur]";
+          echo "<a href='filmExemple.php?value=$c[titre_original]'><li>$c[code_film] $c[titre_original] $c[realisateur]</a>";
         }
         echo "</ul>";
       }
@@ -31,7 +31,7 @@
         echo "<ul>";
 
         foreach($result as $c){
-          echo "<li>$c[code_film] $c[titre_original]";
+          echo "<li><a href='filmExemple.php?value=$c[titre_original]'> $c[code_film] $c[titre_original]</a>";
         }
         echo "</ul>";
       }
@@ -41,7 +41,7 @@
         echo "<ul>";
 
         foreach($result as $c){
-          echo "<li>$c[code_film] $c[titre_original]";
+          echo "<a href='filmExemple.php?value=$c[titre_original]'><li>$c[code_film] $c[titre_original]</a>";
         }
         echo "</ul>";
       }
@@ -54,7 +54,7 @@
         echo "<ul>";
 
         foreach($result as $c){
-          echo "<li>$c[titre_original]";
+          echo "<a href='filmExemple.php?value=$c[titre_original]'><li>$c[titre_original]</a>";
         }
         echo "</ul>";
 
@@ -64,7 +64,7 @@
         echo "<ul>";
 
         foreach($result as $c){
-          echo "<li>$c[titre_original]";
+          echo "<a href='filmExemple.php?value=$c[titre_original]'><li>$c[titre_original]</a>";
         }
         echo "</ul>";
 
@@ -74,7 +74,7 @@
         echo "<ul>";
 
         foreach($result as $c){
-          echo "<li>$c[titre_original] $c[date]";
+          echo "<a href='filmExemple.php?value=$c[titre_original]'><li>$c[titre_original] $c[date]</a>";
         }
         echo "</ul>";
       }
@@ -83,7 +83,7 @@
         echo "<ul>";
 
         foreach($result as $c){
-          echo "<li>$c[titre_original] $c[duree]";
+          echo "<li><a href='filmExemple.php?value=$c[titre_original]'>$c[titre_original] $c[duree]</a>";
         }
         echo "</ul>";
       }
@@ -97,11 +97,11 @@
     $result=$file_db->query("SELECT * from films NATURAL JOIN genres NATURAL JOIN classification where nom_genre LIKE '".$_POST['genreCombo']."%'and code_film=ref_code_film and code_genre=ref_code_genre");
     echo "<ul>";
     foreach($result as $c){
-      echo "<li>$c[titre_original] $c[duree]";
+      echo "<li><a href='filmExemple.php?value=$c[titre_original]'>$c[titre_original] $c[duree]</a>";
     }
     echo "</ul>";
   }
-  
+
     $file_db=null;
     ?>
   </section>

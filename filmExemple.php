@@ -27,8 +27,9 @@ $file_db=new PDO("sqlite:BD_GENERAL.sqlite");
           echo"<li>Date de parution : $c[date]";
           echo "<li>Durée du film : $c[duree] minutes";
           echo "</ul>";
+          if (isset($_GET['link'])){
           echo "<img src='$_GET[link]' alt='Image non chargé' height='300' width='200'>";
-
+        }
 
         }
 
