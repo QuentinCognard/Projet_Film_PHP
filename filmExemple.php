@@ -6,7 +6,7 @@
       <link rel="stylesheet" type="text/css" href="accueil.css">
   </head>
   <header>
-    <h1> Film Search</h1>
+    <h1><a href="accueil.php"> Film Search</a></h1>
   </header>
   <body>
     <section id='principale'>

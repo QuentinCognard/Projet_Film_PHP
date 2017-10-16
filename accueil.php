@@ -10,6 +10,9 @@
   </header>
   <body>
     <section id='principale'>
+      <nav id="gererFilm">
+        <a href= "ajoutFilm.php">Ajouter un film</a>
+        <a href= "suprFilm.php">Supprimer un film</a>
       <h2> Recherchez un film</h2>
     <?php
 
@@ -17,15 +20,15 @@
         "type" => "comboBox",
         "name" => "genreCombo",
         "value" => "genreCombo",
-        "text" => "Rechercher par 'genre' : "
+        "text" => "Rechercher par 'genre' :"
       );
 
       $criteresCombo=array(
         "type" => "comboBox",
         "name" => "criteresCombo",
         "value" => "criteresCombo",
-        "text" => "<br>Rechercher par ",
-        "text2" => " : ",
+        "text" => "Rechercher par",
+        "text2" => ":",
         "choices" =>[
         array(
           "text" => "Nom",
@@ -44,7 +47,7 @@
       $criteres =
         [array(
           "type"=>"radio",
-          "text"=>"<br>Trier les films selon les criteres: ",
+          "text"=>"Trier les films selon les criteres: ",
           "name"=>"criteres",
           "choices"=> [
           array("text"=>"Alphabétique","value"=>"alphabetique"),
@@ -56,7 +59,7 @@
 
     <form action='filmRecherche.php' method="POST">
         <?php
-        function criteres_checkbox($criteresCombo){
+        function criteres_ComboBox($criteresCombo){
           $html = $criteresCombo["text"];
           $html .= "<select name='$criteresCombo[name]'>";
           foreach ( $criteresCombo["choices"] as $cc){
@@ -86,7 +89,7 @@
 
         <?php
 
-        criteres_checkbox($criteresCombo);
+        criteres_ComboBox($criteresCombo);
 
         ?>
       <input type="text" name="recherche">
@@ -99,7 +102,7 @@
           $i = 0;
           foreach ( $criteres["choices"] as $c){
             $i +=1;
-            $html .= "<br><input type ='radio' name='$criteres[name]' value='$c[value]' id='$criteres[name]-$i'>";
+            $html .= "<input type ='radio' name='$criteres[name]' value='$c[value]' id='$criteres[name]-$i'>";
             $html .= " <label for='$criteres[name]-$i'>$c[text]</label>";
           }
           echo $html;
@@ -114,92 +117,82 @@
          <br><input type="submit" value='Trier' name="criteresFilm">
          <?php
          $exemples =
-           [array(
-             "id"=>"15",
-             "link"=>"https://vignette2.wikia.nocookie.net/fr.starwars/images/e/e0/Lundi.png/revision/latest?cb=20151011153017",
-             "name"=>"Star Wars",
-             "value"=>"Star Wars: Episode V, T",
-             "section"=> "exemple1",
-             "Debutligne" => "true",
+            [array(
+               "id"=>"15",
+               "link"=>"https://vignette2.wikia.nocookie.net/fr.starwars/images/e/e0/Lundi.png/revision/latest?cb=20151011153017",
+               "name"=>"Star Wars",
+               "value"=>"Star Wars: Episode V, T",
+               "section"=> "exemple1",
+               "Debutligne" => "true",
+               "Finligne" => "false"
+           ),
+           array(
+             "id"=>"16",
+             "link"=>"http://fr.web.img6.acsta.net/medias/nmedia/00/00/01/27/69197311_af.jpg",
+             "name"=> "2001 L'odyssée",
+             "value"=> "2001",
+             "section" => "exemple2",
+             "Debutligne" => "false",
              "Finligne" => "false"
-         ),
-         array(
-           "id"=>"16",
-           "link"=>"http://fr.web.img6.acsta.net/medias/nmedia/00/00/01/27/69197311_af.jpg",
-           "name"=> "2001 L'odyssée",
-           "value"=> "2001",
-           "section" => "exemple2",
-           "Debutligne" => "false",
-           "Finligne" => "false"
-         ),
-         array(
-           "id"=>"17",
-           "link"=>"http://fr.web.img5.acsta.net/medias/nmedia/00/00/00/33/spiderman.jpg",
-           "name"=> "Spider-Man",
-           "value"=> "Spider",
-           "section" => "exemple3",
-           "Debutligne" => "false",
-            "Finligne" => "true"
-         ),
-         array(
-           "id"=>"18",
-           "link"=>"http://fr.web.img6.acsta.net/medias/04/34/49/043449_af.jpg",
-           "name"=> "Matrix",
-           "value"=>"Matrix",
-           "section" => "exemple4",
-           "Debutligne" => "true",
-            "Finligne" => "false"
-         ),
-         array(
-           "id"=>"19",
-           "link"=>"http://images.fan-de-cinema.com/affiches/large/63/53663.jpg",
-           "name"=> "2046",
-           "value"=>"2046",
-           "section" => "exemple5",
-           "Debutligne" => "false",
-            "Finligne" => "false"
-          ),
-         array(
-           "id"=>"20",
-           "link"=>"http://www.dailymars.net/wp-content/uploads/2013/09/Ben_Hur.jpg",
-           "name"=> "Ben-Hur",
-           "value"=>"Ben",
-           "section" => "exemple6",
-           "Debutligne" => "false",
-            "Finligne" => "true"
-         )
+           ),
+           array(
+             "id"=>"17",
+             "link"=>"http://fr.web.img5.acsta.net/medias/nmedia/00/00/00/33/spiderman.jpg",
+             "name"=> "Spider-Man",
+             "value"=> "Spider",
+             "section" => "exemple3",
+             "Debutligne" => "false",
+              "Finligne" => "true"
+           ),
+           array(
+             "id"=>"18",
+             "link"=>"http://fr.web.img6.acsta.net/medias/04/34/49/043449_af.jpg",
+             "name"=> "Matrix",
+             "value"=>"Matrix",
+             "section" => "exemple4",
+             "Debutligne" => "true",
+              "Finligne" => "false"
+           ),
+           array(
+             "id"=>"19",
+             "link"=>"http://images.fan-de-cinema.com/affiches/large/63/53663.jpg",
+             "name"=> "2046",
+             "value"=>"2046",
+             "section" => "exemple5",
+             "Debutligne" => "false",
+              "Finligne" => "false"
+            ),
+           array(
+             "id"=>"20",
+             "link"=>"http://www.dailymars.net/wp-content/uploads/2013/09/Ben_Hur.jpg",
+             "name"=> "Ben-Hur",
+             "value"=>"Ben",
+             "section" => "exemple6",
+             "Debutligne" => "false",
+              "Finligne" => "true"
+           )
 
-       ];
-       ?>
-       <h2> Exemples de Film : </h2>
-      <section class='exempleF'>
+         ];
+      ?>
+         <h2> Exemples de Film : </h2>
+        <section class='exempleF'>
 
-<?php
-       foreach($exemples as $e){
-        //  echo "<section id=$e[section]>";
-         if($e['Debutligne']=="true"){
-           echo "<div class='exempleF2'>";
+  <?php
+         foreach($exemples as $e){
+          //  echo "<section id=$e[section]>";
+           if($e['Debutligne']=="true"){
+             echo "<div class='exempleF2'>";
+           }
+           echo "<section id=$e[section]$e[id]>";
+           echo "<p> $e[name] </p>";
+           echo "<a href='filmExemple.php?value=$e[value]&link=$e[link]'><img src=$e[link] name='test' onmouseover='this.src=https://www.noelshack.com/2017-41-5-1507885240-test.jpg' alt='Erreur Image $e[id]' height='300' width='200'></a>";
+           echo "</section>";
+           if($e['Finligne']=="true"){
+             echo "</div>";
+           }
+          //  echo"</section>";
          }
-         echo "<section id=$e[section]$e[id]>";
-         echo "<p> $e[name] </p>";
-         echo "<a href='filmExemple.php?value=$e[value]&link=$e[link]'><img src=$e[link] name='test' onmouseover='this.src=https://www.noelshack.com/2017-41-5-1507885240-test.jpg' alt='Erreur Image $e[id]' height='300' width='200'></a>";
-         echo "</section>";
-         if($e['Finligne']=="true"){
-           echo "</div>";
-         }
-        //  echo"</section>";
-       }
-   ?>
-
-
-           <!-- <section id='exemple1'>
-             <p> Star Wars </p>
-             <a href='filmExemple.php?id=15'><img src='https://vignette2.wikia.nocookie.net/fr.starwars/images/e/e0/Lundi.png/revision/latest?cb=20151011153017' alt='Erreur Image 1'></a>
-         </section>
-          <section id='exemple2'>
-            <p> 2001 L'odyssée de l'espace </p>
-            <a href='filmExemple.php?id=16'><img src="http://fr.web.img6.acsta.net/medias/nmedia/00/00/01/27/69197311_af.jpg"alt="Oups l'image 2 ne marche plus :(  " height="300" width="200"></a> -->
-
+     ?>
 
          </section>
     </form>
